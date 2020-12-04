@@ -27,7 +27,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val remoteDataSource = RemoteDataSource()
     private val apiService = remoteDataSource.buildApi(ApiService::class.java)
     private val repository =
-        HomeRepository(apiService, AppDatabase.getInstance(application), taskDao)
+        HomeRepository(apiService, taskDao)
 
 
     private val _getAllTaskResponse: MutableLiveData<Resource<AllTaskResponse>> =

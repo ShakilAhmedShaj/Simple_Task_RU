@@ -28,7 +28,6 @@ class HomeFragment : Fragment(), TaskCallBack, SearchView.OnQueryTextListener {
         const val TAG = "HomeFragment"
     }
 
-
     private val viewModel: HomeViewModel by viewModels()
     private var accessToken: String = ""
 
@@ -195,6 +194,4 @@ class HomeFragment : Fragment(), TaskCallBack, SearchView.OnQueryTextListener {
     private fun showProgressBar() {
         binding.progressbarHome.visible(true)
     }
-
-
 }
