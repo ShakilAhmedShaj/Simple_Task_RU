@@ -22,11 +22,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         const val TAG = "HomeViewModel"
     }
 
-    val emptyDatabase: MutableLiveData<Boolean> = MutableLiveData(false)
-
-    fun checkIfDatabaseEmpty(taskData: List<TaskEntity>){
-        emptyDatabase.value = taskData.isEmpty()
-    }
 
     private val taskDao = AppDatabase.getInstance(application).taskDao()
     private val remoteDataSource = RemoteDataSource()
@@ -41,8 +36,10 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     val getAllTaskResponse: LiveData<Resource<AllTaskResponse>>
         get() = _getAllTaskResponse
 
+
     fun cacheTask(taskList: ArrayList<TaskEntity>) = viewModelScope.launch {
         repository.deleteAll()
+
         for (task in taskList) {
             val id = repository.insert(
                 TaskEntity(
