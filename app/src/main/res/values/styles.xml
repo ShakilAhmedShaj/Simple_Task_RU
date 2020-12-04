@@ -31,5 +31,11 @@
         <item name="android:padding">12dp</item>
     </style>
 
+    <style name="EditText.Flat.Black" parent="@style/AppTheme">
+        <item name="android:textColorHint">#000000</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Subhead</item>
+        <item name="android:textColor">@color/grey_90</item>
+    </style>
+
 
 </resources>
