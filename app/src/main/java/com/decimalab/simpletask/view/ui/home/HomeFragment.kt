@@ -62,6 +62,8 @@ class HomeFragment : Fragment(), TaskCallBack, SearchView.OnQueryTextListener {
         })
         //viewModel.checkIfDatabaseEmpty(allTaskList)
 
+        setRecyclerView()
+
 
         return binding.root
     }
@@ -99,7 +101,7 @@ class HomeFragment : Fragment(), TaskCallBack, SearchView.OnQueryTextListener {
 
     private fun searchThroughDatabase(query: String) {
         val searchQuery = "%$query%"
-        allTaskList.clear()
+        allTaskList.removeAll(allTaskList)
         viewModel.searchDatabase(searchQuery).observe(this, Observer { list ->
             list?.let {
 
@@ -121,6 +123,7 @@ class HomeFragment : Fragment(), TaskCallBack, SearchView.OnQueryTextListener {
                     if (it.value.status) {
 
                         allTaskList.clear()
+
                         allTaskList = it.value.data.toCollection(allTaskList)
                         viewModel.cacheTask(allTaskList)
                         setRecyclerView()
@@ -153,7 +156,6 @@ class HomeFragment : Fragment(), TaskCallBack, SearchView.OnQueryTextListener {
     }
 
     private fun setRecyclerView() {
-
 
 
         taskAdapter = TaskAdapter(allTaskList)
