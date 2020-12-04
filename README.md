@@ -9,17 +9,24 @@
 <table>
   <tr>
      <td align="center">Register & Login</td>
-     <td align="center">UX</td>
+     <td align="center">Bottom Nav</td>
      <td align="center">Search</td>
-     <td align="center">Task Details</td>
-     <td align="center">Add Task</td>
   </tr>
   <tr>
     <td valign="top"><img src="https://user-images.githubusercontent.com/15268903/101110835-1bda6a00-3604-11eb-8134-89fc8de97d73.gif" height="400" width="200"></td>
     <td valign="top"><img src="https://user-images.githubusercontent.com/15268903/101110904-3f9db000-3604-11eb-965e-7a58324025f4.gif" height="400" width="200"></td>
     <td valign="top"><img src="https://user-images.githubusercontent.com/15268903/101110968-5ba15180-3604-11eb-8d91-5e8293c89696.gif" height="400" width="200"></td>
+  </tr>
+
+  <tr>
+     <td align="center">Task Details</td>
+     <td align="center">Add Task</td>
+     <td align="center">Profile</td>
+  </tr>
+  <tr>
     <td valign="top"><img src="https://user-images.githubusercontent.com/15268903/101111123-be92e880-3604-11eb-8e29-97c18acc7b4e.gif" height="400" width="200"></td>
     <td valign="top"><img src="https://user-images.githubusercontent.com/15268903/101111055-8be8f000-3604-11eb-831e-727a3bde7d46.gif" height="400" width="200"></td>
+    <td valign="top"><img src="https://user-images.githubusercontent.com/15268903/101123974-36224100-3620-11eb-9c2e-e9194da5db3c.png" height="400" width="200"></td>
   </tr>
  </table>
  <br>
