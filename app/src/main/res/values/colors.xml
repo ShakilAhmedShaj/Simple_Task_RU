@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#58b9f0</color>
+    <color name="colorPrimaryDark">#0089bd</color>
+    <color name="colorPrimaryLight">#90ebff</color>
+    <color name="colorAccent">#03DAC5</color>
+
+
+    <color name="logoWhite">#EFEFEF</color>
+    <color name="logoGrey">#739098</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="lightGray">#E6E6E6</color>
+
+    <color name="grey_10">#e6e6e6</color>
+    <color name="green_500">#4CAF50</color>
+    <color name="grey_40">#999999</color>
+    <color name="blue_600">#1E88E5</color>
+    <color name="blue_grey_300">#90A4AE</color>
+    <color name="grey_60">#666666</color>
+
+    <color name="deep_purple_700">#512DA8</color>
+    <color name="red_400">#EF5350</color>
+    <color name="grey_80">#37474F</color>
+    <color name="grey_5">#f2f2f2</color>
+    <color name="deep_purple_500">#673AB7</color>
+    <color name="grey_90">#263238</color>
+
+    <color name="red">#FF4646</color>
+    <color name="yellow">#FFC114</color>
+    <color name="green">#00C980</color>
+
+    <color name="pending">#E80E0E</color>
+    <color name="started">#2196F3</color>
+    <color name="done">#4CAF50</color>
+
+    <color name="TM_color_facebook">#3F51B5</color>
+    <color name="TM_view_color">#DADADA</color>
+    <color name="TM_textColorSecondary">#B9B6B6</color>
+    <color name="TM_textColorPrimary">#333333</color>
+    <color name="TM_colorPrimary">#5B66BE</color>
+
+    <color name="status_pending">#E80E0E</color>
+    <color name="status_started">#2196F3</color>
+    <color name="status_completed">#4CAF50</color>
+
+    <color name="black">#000000</color>
+
+</resources>
