@@ -16,7 +16,6 @@ import com.decimalab.simpletask.utils.Resource
  */
 class HomeRepository(
     private val apiService: ApiService,
-    private val appDatabase: AppDatabase,
     private val taskDao: TaskDao
 ) : BaseRepository() {
 
@@ -28,10 +27,6 @@ class HomeRepository(
 
     fun searchDatabase(searchQuery: String): LiveData<List<TaskEntity>> {
         return taskDao.searchDatabase(searchQuery)
-    }
-
-    suspend fun deleteAll() {
-        taskDao.deleteAll()
     }
 
 }
