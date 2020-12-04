@@ -12,7 +12,7 @@ import com.decimalab.simpletask.data.local.entity.TaskEntity
 interface TaskDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(taskEntity: TaskEntity): Long
+    suspend fun insert(taskEntities: ArrayList<TaskEntity>)
 
     @Query("SELECT * FROM task_entity WHERE title LIKE :searchQuery")
     fun searchTask(searchQuery: String): LiveData<List<TaskEntity>>

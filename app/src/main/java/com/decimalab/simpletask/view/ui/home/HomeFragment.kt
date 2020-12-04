@@ -28,6 +28,7 @@ class HomeFragment : Fragment(), TaskCallBack, SearchView.OnQueryTextListener {
         const val TAG = "HomeFragment"
     }
 
+
     private val viewModel: HomeViewModel by viewModels()
     private var accessToken: String = ""
 
@@ -59,10 +60,6 @@ class HomeFragment : Fragment(), TaskCallBack, SearchView.OnQueryTextListener {
             Log.d(TAG, accessToken)
             viewModel.getAllTask(accessToken)
         })
-        //viewModel.checkIfDatabaseEmpty(allTaskList)
-
-        setRecyclerView()
-
 
         return binding.root
     }
@@ -126,8 +123,6 @@ class HomeFragment : Fragment(), TaskCallBack, SearchView.OnQueryTextListener {
                         allTaskList = it.value.data.toCollection(allTaskList)
                         viewModel.cacheTask(allTaskList)
                         setRecyclerView()
-                        //viewModel.checkIfDatabaseEmpty(allTaskList)
-
                         hideProgressBar()
                         //toast("Loaded")
 
@@ -194,4 +189,6 @@ class HomeFragment : Fragment(), TaskCallBack, SearchView.OnQueryTextListener {
     private fun showProgressBar() {
         binding.progressbarHome.visible(true)
     }
+
+
 }

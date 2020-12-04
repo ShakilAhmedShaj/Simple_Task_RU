@@ -16,6 +16,7 @@ import com.decimalab.simpletask.utils.Resource
  */
 class HomeRepository(
     private val apiService: ApiService,
+    private val appDatabase: AppDatabase,
     private val taskDao: TaskDao
 ) : BaseRepository() {
 
@@ -23,10 +24,34 @@ class HomeRepository(
         accessToken: String, liveData: MutableLiveData<Resource<AllTaskResponse>>
     ) = safeApiCall({ apiService.getAllTask(accessToken) }, liveData)
 
-    suspend fun insert(taskEntity: TaskEntity) = appDatabase.taskDao().insert(taskEntity)
+    suspend fun insert(taskEntities: ArrayList<TaskEntity>) {
+
+        /*for (task in taskEntities){
+            val tempTask = TaskEntity(
+                title = task.title,
+                body = task.body,
+                priority = task.priority,
+                status = task.status,
+                userId = task.userId,
+                updatedAt = task.updatedAt,
+                createdAt = task.createdAt,
+                taskId = task.taskId,
+                bgColor = task.bgColor,
+                id = task.id
+            )*/
+        taskDao.deleteAll()
+        taskDao.insert(
+            taskEntities
+        )
+    }
+
 
     fun searchDatabase(searchQuery: String): LiveData<List<TaskEntity>> {
         return taskDao.searchDatabase(searchQuery)
+    }
+
+    suspend fun deleteAll() {
+        taskDao.deleteAll()
     }
 
 }

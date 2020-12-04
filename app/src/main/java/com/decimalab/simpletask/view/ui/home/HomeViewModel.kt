@@ -27,7 +27,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val remoteDataSource = RemoteDataSource()
     private val apiService = remoteDataSource.buildApi(ApiService::class.java)
     private val repository =
-        HomeRepository(apiService, taskDao)
+        HomeRepository(apiService, AppDatabase.getInstance(application), taskDao)
 
 
     private val _getAllTaskResponse: MutableLiveData<Resource<AllTaskResponse>> =
@@ -38,25 +38,10 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
 
     fun cacheTask(taskList: ArrayList<TaskEntity>) = viewModelScope.launch {
-        repository.deleteAll()
 
-        for (task in taskList) {
-            val id = repository.insert(
-                TaskEntity(
-                    title = task.title,
-                    body = task.body,
-                    priority = task.priority,
-                    status = task.status,
-                    userId = task.userId,
-                    updatedAt = task.updatedAt,
-                    createdAt = task.createdAt,
-                    taskId = task.taskId,
-                    bgColor = task.bgColor,
-                    id = task.id
-                )
-            )
-            Log.d(TAG, "cacheTask: $id")
-        }
+        val id = repository.insert(
+            taskList
+        )
     }
 
     fun searchDatabase(searchQuery: String): LiveData<List<TaskEntity>> {
