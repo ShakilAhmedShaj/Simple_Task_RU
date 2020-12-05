@@ -66,10 +66,12 @@ class HomeFragment : Fragment(), TaskCallBack, SearchView.OnQueryTextListener {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
         hideProgressBar()
+        setRecyclerView()
+
         observeGetAllTaskResponse()
-
-
+        observeTaskListFromDb()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -97,16 +99,13 @@ class HomeFragment : Fragment(), TaskCallBack, SearchView.OnQueryTextListener {
 
     private fun searchThroughDatabase(query: String) {
         val searchQuery = "%$query%"
-        allTaskList.removeAll(allTaskList)
         viewModel.searchDatabase(searchQuery).observe(this, Observer { list ->
             list?.let {
-
-                allTaskList = it.toCollection(allTaskList)
-                setRecyclerView()
+                allTaskList.clear()
+                allTaskList.addAll(list)
+                taskAdapter.notifyDataSetChanged()
             }
         })
-
-
     }
 
     private fun observeGetAllTaskResponse() {
@@ -118,13 +117,8 @@ class HomeFragment : Fragment(), TaskCallBack, SearchView.OnQueryTextListener {
 
                     if (it.value.status) {
 
-                        allTaskList.clear()
-
-                        allTaskList = it.value.data.toCollection(allTaskList)
-                        viewModel.cacheTask(allTaskList)
-                        setRecyclerView()
+                        viewModel.cacheTask(it.value.data)
                         hideProgressBar()
-                        //toast("Loaded")
 
                         Log.d(TAG, "All Tasks : $allTaskList")
                     } else {
@@ -149,14 +143,18 @@ class HomeFragment : Fragment(), TaskCallBack, SearchView.OnQueryTextListener {
         })
     }
 
+    fun observeTaskListFromDb() {
+        viewModel.getAllTaskFromDb().observe(viewLifecycleOwner, Observer { list ->
+            allTaskList.clear()
+            allTaskList.addAll(list)
+            taskAdapter.notifyDataSetChanged()
+        })
+    }
+
     private fun setRecyclerView() {
-
-
         taskAdapter = TaskAdapter(allTaskList)
         recyclerView.adapter = taskAdapter
-
         taskAdapter.setTaskCallBackListener(this)
-
     }
 
     override fun onTaskClick(view: View, position: Int, isLongClick: Boolean) {

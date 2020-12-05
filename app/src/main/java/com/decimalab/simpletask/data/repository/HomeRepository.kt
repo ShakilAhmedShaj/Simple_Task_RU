@@ -24,7 +24,7 @@ class HomeRepository(
         accessToken: String, liveData: MutableLiveData<Resource<AllTaskResponse>>
     ) = safeApiCall({ apiService.getAllTask(accessToken) }, liveData)
 
-    suspend fun insert(taskEntities: ArrayList<TaskEntity>) {
+    suspend fun insert(taskEntities: List<TaskEntity>) {
 
         /*for (task in taskEntities){
             val tempTask = TaskEntity(
@@ -48,6 +48,10 @@ class HomeRepository(
 
     fun searchDatabase(searchQuery: String): LiveData<List<TaskEntity>> {
         return taskDao.searchDatabase(searchQuery)
+    }
+
+    fun getAllTaskList(): LiveData<List<TaskEntity>> {
+        return taskDao.getAllTaskList()
     }
 
     suspend fun deleteAll() {

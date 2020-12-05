@@ -37,7 +37,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         get() = _getAllTaskResponse
 
 
-    fun cacheTask(taskList: ArrayList<TaskEntity>) = viewModelScope.launch {
+    fun cacheTask(taskList: List<TaskEntity>) = viewModelScope.launch {
 
         val id = repository.insert(
             taskList
@@ -51,7 +51,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     fun getAllTask(token: String) = viewModelScope.launch {
         repository.getAllTask(token, _getAllTaskResponse)
-
-
     }
+
+    fun getAllTaskFromDb(): LiveData<List<TaskEntity>> = repository.getAllTaskList()
 }
