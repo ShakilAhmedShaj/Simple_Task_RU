@@ -114,19 +114,14 @@ class HomeFragment : Fragment(), TaskCallBack, SearchView.OnQueryTextListener {
 
             when (it) {
                 is Resource.Success -> {
-
                     if (it.value.status) {
-
                         viewModel.cacheTask(it.value.data)
                         hideProgressBar()
-
                         Log.d(TAG, "All Tasks : $allTaskList")
                     } else {
                         hideProgressBar()
                         toast("No Task")
                     }
-
-
                 }
                 is Resource.Failure -> {
 

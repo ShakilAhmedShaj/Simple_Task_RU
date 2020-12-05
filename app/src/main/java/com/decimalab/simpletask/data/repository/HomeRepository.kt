@@ -39,7 +39,7 @@ class HomeRepository(
                 bgColor = task.bgColor,
                 id = task.id
             )*/
-        taskDao.deleteAll()
+        //taskDao.deleteAll()
         taskDao.insert(
             taskEntities
         )
